@@ -9,6 +9,8 @@ public class Stack<T> {
     *
     * The last node points to the previous node, and the previous node points to the
     * previous node, and so on until the first element that points to null
+    *
+    * The first element always points to null
     * */
 
     private Node<T> ref; // ref always points to the stack top (the last element)
@@ -24,7 +26,7 @@ public class Stack<T> {
     * Data type T from the last element
     * */
     public T top() {
-        return ref.getData();
+        return !isEmpty() ? ref.getData() : null;
     }
 
     /*

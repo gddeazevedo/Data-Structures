@@ -1,14 +1,20 @@
 package com.node;
 
-public class Node<T extends Object> {
+
+public class Node<T> {
     private T data;
     private Node<T> nextNode;
+
+    public Node() {}
 
     public Node(T data) {
         this.data = data;
     }
 
-    public Node() {}
+    public Node(T data, Node<T> nextNode) {
+        this.data = data;
+        this.nextNode = nextNode;
+    }
 
     public void setData(T data) {
         this.data = data;
@@ -28,6 +34,6 @@ public class Node<T extends Object> {
 
     @Override
     public String toString() {
-        return "Node { data: " + data + " }";
+        return "[" + data + "]";
     }
 }

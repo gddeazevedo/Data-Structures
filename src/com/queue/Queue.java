@@ -7,6 +7,8 @@ public class Queue<T> {
     * FIFO
     * First In First Out
     * First element always point to null
+    * The last node points to the previous node, and the previous node points to the
+    * previous node, and so on until the first element that points to null
     * */
 
     private Node<T> ref; // always points to the last element (end of the queue)
