@@ -4,12 +4,17 @@ import com.node.Node;
 
 public class LinkedList<T> {
     /**
+     * it is a simple linked list
+     * The first element points to the second, the second points to the third and so on
+     * until the last element
      * The last element always points to null
      */
     private Node<T> ref; // always points to the first element in the list
     private Node<T> currentNode;
+    private int size = 0;
 
     public void add(T data) {
+        size += 1;
         if (isEmpty()) {
             ref = new Node<>(data);
         } else {
@@ -34,6 +39,7 @@ public class LinkedList<T> {
             previousNode.setNextNode(removedNode.getNextNode());
         }
         removedNode.setNextNode(null);
+        size -= 1;
         return removedNode.getData();
     }
 
@@ -42,15 +48,17 @@ public class LinkedList<T> {
     }
 
     public int size() {
-        int qttNodes = 0;
-        currentNode = ref;
+//        int qttNodes = 0;
+//        currentNode = ref;
+//
+//        while (currentNode != null) {
+//            qttNodes++;
+//            currentNode = currentNode.getNextNode();
+//        }
+//
+//        return qttNodes;
 
-        while (currentNode != null) {
-            qttNodes++;
-            currentNode = currentNode.getNextNode();
-        }
-
-        return qttNodes;
+        return size;
     }
 
     public boolean isEmpty() {

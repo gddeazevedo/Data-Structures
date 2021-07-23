@@ -14,5 +14,6 @@ public class MainLinkedList {
         System.out.println(numbers.get(9));
         System.out.println(numbers.remove(4));
         System.out.println(numbers);
+        System.out.println(numbers.size());
     }
 }

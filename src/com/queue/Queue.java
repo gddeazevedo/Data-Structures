@@ -75,6 +75,7 @@ public class Queue<T> {
             current = current.getNextNode();
         }
 
+        str += "null";
         return str;
     }
 }
