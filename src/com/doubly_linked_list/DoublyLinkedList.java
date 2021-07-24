@@ -96,6 +96,10 @@ public class DoublyLinkedList<T> {
         return listSize;
     }
 
+    public boolean isEmpty() {
+        return listSize == 0;
+    }
+
     private void validateIndex(int index) {
         if (index >= size() || index < 0) {
             int lastIndex = Math.max(listSize - 1, 0);
