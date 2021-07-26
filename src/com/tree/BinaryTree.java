@@ -20,7 +20,80 @@ public class BinaryTree<E extends Comparable<E>> {
         root = insert(root, newNode);
     }
 
-    public void remove() {}
+    public void remove(E el) {
+        try {
+            Node<E> current = root;
+            Node<E> parent = null;
+            Node<E> child;
+            Node<E> temp;
+
+            while (current != null && !current.el.equals(el)) {
+                parent = current;
+                if (el.compareTo(current.el) < 0) {
+                    current = current.left;
+                } else {
+                    current = current.right;
+                }
+            }
+
+            if (current == null) {
+                System.out.println("Value was not found!");
+                return;
+            }
+
+            if (parent == null) {
+                if (current.right == null) {
+                    root = current.left;
+                } else if (current.left == null) {
+                    root = current.right;
+                } else {
+                    child = current.left;
+                    temp = current;
+                    while (child.right != null) {
+                        if (child != current.left) {
+                            temp.right = child.left;
+                            child.left = root.left;
+                        }
+                        temp = child;
+                        child = child.left;
+                    }
+                    child.right = root.right;
+                    root = child;
+                }
+            } else if (current.right == null) {
+                if (parent.left == current) {
+                    parent.left = current.left;
+                } else {
+                    parent.right = current.left;
+                }
+            } else if (current.left == null) {
+                if (parent.left == current) {
+                    parent.left = current.right;
+                } else {
+                    parent.right = current.right;
+                }
+            } else {
+                for (
+                        temp = current, child = current.left;
+                        child.right != null;
+                        temp = child, child = child.right
+                ) {
+                    if (child != current.left) {
+                        temp.right = child.left;
+                        child.left = current.left;
+                    }
+                    child.right = current.right;
+                    if (parent.left == current) {
+                        parent.left = child;
+                    } else {
+                        parent.right = child;
+                    }
+                }
+            }
+        } catch (NullPointerException error) {
+            System.out.println("Error: " + error);
+        }
+    }
 
     public void showInOrder() {
         showInOrder(root);
