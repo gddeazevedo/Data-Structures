@@ -13,6 +13,15 @@ public class LinkedList<T> {
     private Node<T> currentNode;
     private int size = 0;
 
+    public LinkedList() {}
+
+    @SafeVarargs
+    public LinkedList(T... values) {
+        for (T value : values) {
+            add(value);
+        }
+    }
+
     public void add(T data) {
         size += 1;
         if (isEmpty()) {
